@@ -13,9 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="builtin_shaders">
+      <UniqueIdentifier>{dce235cf-3089-4bc0-bf66-e894f0286f29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+    <None Include="builtin_shaders\uber_shader.hlsl">
+      <Filter>builtin_shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -27,6 +33,12 @@
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="dx11_renderer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GmdlFormat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NativeRenderer.cpp">
@@ -36,6 +48,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dx11_renderer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

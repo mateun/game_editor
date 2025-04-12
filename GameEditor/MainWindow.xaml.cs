@@ -19,6 +19,13 @@ namespace GameEditor
         public MainWindow()
         {
             InitializeComponent();
+
+            CompositionTarget.Rendering += OnRendering;
+        }
+
+        private void OnRendering(object? sender, EventArgs e)
+        {
+            viewportHost.RenderFrame();
         }
     }
 }

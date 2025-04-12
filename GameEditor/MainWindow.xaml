@@ -85,7 +85,7 @@
         </Border>
 
         <!-- Center Panel (DX11 view later) -->
-        <local:DxViewportHost Grid.Column="2" Grid.Row="1" />
+        <local:DxViewportHost x:Name="viewportHost" Grid.Column="2" Grid.Row="1"  />
         <!--<Border Grid.Column="1" Grid.Row="1" Background="#333" BorderBrush="Gray" BorderThickness="1">
             <TextBlock Text="Center Panel (DX11 Viewport)" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Border>-->

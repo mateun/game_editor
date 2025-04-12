@@ -9,5 +9,15 @@
 
 // Fügen Sie hier Header hinzu, die vorkompiliert werden sollen.
 #include "framework.h"
+#include <d3d11.h>
+#include <DirectXMath.h>
+#include <DirectXPackedVector.h>
+#include <DirectXColors.h>
+#include <d3dcompiler.h>
+#include <dxgi.h>
+#include <string>
+#include <vector>
+#include <map>
+#include <stdexcept>
 
 #endif //PCH_H

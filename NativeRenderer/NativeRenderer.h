@@ -1,33 +1,38 @@
-// Der folgende ifdef-Block ist die Standardmethode zum Erstellen von Makros, die das Exportieren
-// aus einer DLL vereinfachen. Alle Dateien in dieser DLL werden mit dem NATIVERENDERER_EXPORTS-Symbol
-// (in der Befehlszeile definiert) kompiliert. Dieses Symbol darf für kein Projekt definiert werden,
-// das diese DLL verwendet. Alle anderen Projekte, deren Quelldateien diese Datei beinhalten, sehen
-// NATIVERENDERER_API-Funktionen als aus einer DLL importiert an, während diese DLL
-// mit diesem Makro definierte Symbole als exportiert ansieht.
+#pragma once
 #ifdef NATIVERENDERER_EXPORTS
 #define NATIVERENDERER_API __declspec(dllexport)
 #else
 #define NATIVERENDERER_API __declspec(dllimport)
 #endif
 
-// Diese Klasse wird aus der DLL exportiert.
+#include "framework.h"
 
-/*class NATIVERENDERER_API CNativeRenderer {
+
+void GetWindowClientSize(HWND hwnd, int& width, int& height);
+
+
+
+/// <summary>
+/// This class defines a native rendering backend (e.g. DX11, DX12, GL, Vulkan..)
+/// Pointers to this class are provided to (non-native) dll consumers.
+/// </summary>
+class NativeRenderer {
 public:
-	CNativeRenderer(void);
-	// TODO: Methoden hier hinzufügen.
+	virtual void clean() = 0;
+	virtual void render() = 0;
+	virtual void resize(int w, int h) = 0;
+	virtual void importModel(const char* modelFilePath) = 0;
+
 };
 
-extern NATIVERENDERER_API int nNativeRenderer;
-
-NATIVERENDERER_API int fnNativeRenderer(void);
-*/
 
 extern "C" {
 
-	NATIVERENDERER_API int CreateRenderer(HWND hwnd);
-	NATIVERENDERER_API void RenderFrame();
-	NATIVERENDERER_API void ResizeRenderer(int width, int height);
-	NATIVERENDERER_API void DestroyRenderer();
+	NATIVERENDERER_API NativeRenderer* CreateRenderer(HWND hwnd, const char* rendererType = "DX11");
+	NATIVERENDERER_API void RenderFrame(NativeRenderer* renderer);
+	NATIVERENDERER_API void ResizeRenderer(NativeRenderer* r, int width, int height);
+	NATIVERENDERER_API void DestroyRenderer(NativeRenderer* r);
+
+	NATIVERENDERER_API void ImportModel(const char* modelFilePath);
 
 }
