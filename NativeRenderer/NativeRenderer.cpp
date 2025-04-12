@@ -51,5 +51,7 @@ NATIVERENDERER_API int CreateRenderer(HWND hwnd) {
     HRESULT result = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, D3D11_CREATE_DEVICE_DEBUG, &featureLevels, 1, D3D11_SDK_VERSION,
         &device, NULL, &ctx);
     OutputDebugStringA("Dirctx initilaized!\n");
+
+    // TODO continue with DX11 setup
     return 42;
 }
