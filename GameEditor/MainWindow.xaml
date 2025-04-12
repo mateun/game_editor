@@ -1,0 +1,120 @@
+﻿<Window x:Class="GameEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1600">
+    <Grid>
+
+      
+
+        <!-- Define Columns: Left | Center | Right -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <!-- Left panel fixed -->
+            <ColumnDefinition Width="5"/>
+            <!-- Center stretches -->
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="300"/>
+            <!-- Right panel fixed -->
+        </Grid.ColumnDefinitions>
+
+       
+
+        <!-- Define Rows: Top Toolbar | Content -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Toolbar -->
+            <RowDefinition Height="*"/>
+            <!-- Content -->
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="5">
+            <!-- Now your Menu is fine -->
+            <Menu DockPanel.Dock="Top" >
+                <MenuItem Header="_File">
+                    <MenuItem Header="New"/>
+                    <MenuItem Header="Open..."/>
+                    <Separator/>
+                    <MenuItem Header="Exit"/>
+                </MenuItem>
+            </Menu>
+
+            <!-- Top Toolbar -->
+            <!-- Toolbar -->
+            <Border DockPanel.Dock="Top" Background="#333" Padding="0,2">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <!-- Left filler -->
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Buttons centered -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- Right filler -->
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button ToolTip="Play" Margin="2">
+                            <Image Source="pack://application:,,,/Assets/green_x_16.png" Width="16" Height="16"/>
+                        </Button>
+
+                        <Button ToolTip="Pause" Margin="2">
+                            <Image Source="pack://application:,,,/Assets/white_cross_16.png" Width="16" Height="16"/>
+                        </Button>
+
+                        <Button ToolTip="Stop" Margin="2">
+                            <Image Source="pack://application:,,,/Assets/white_cross_16.png" Width="16" Height="16"/>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+        </DockPanel>
+
+     
+
+        <!-- Left Panel (TreeView later) -->
+        <Border Grid.Column="0" Grid.Row="1" Background="#222" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock Text="Left Panel (Scene Tree)" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Center Panel (DX11 view later) -->
+        <local:DxViewportHost Grid.Column="2" Grid.Row="1" />
+        <!--<Border Grid.Column="1" Grid.Row="1" Background="#333" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock Text="Center Panel (DX11 Viewport)" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>-->
+
+        <!-- Right Panel (Properties later) -->
+        <Border Grid.Column="4" Grid.Row="1" Background="#222" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock Text="Right Panel (Properties)" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Left Splitter -->
+        <GridSplitter Grid.Column="1"
+              Grid.Row="1"
+              Width="5"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Stretch"
+              ResizeBehavior="PreviousAndNext"
+              Background="Gray"
+              />
+
+        <!-- Right Splitter -->
+        <GridSplitter Grid.Column="3"
+              Grid.Row="1"
+              Width="5"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Stretch"
+              ResizeBehavior="PreviousAndNext"
+              Background="Gray"
+              />
+
+
+    </Grid>
+</Window>
